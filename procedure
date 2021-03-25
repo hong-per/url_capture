@@ -1,0 +1,39 @@
+CentOS Stream
+
+# install web server
+yum install httpd 
+
+# start web server
+systemctl start httpd.service
+
+# install python3
+yum -y install python3
+
+# pip version upgrade
+pip3 install -U pip
+
+# install selenium
+pip3 install selenium
+
+# install Selenium-Screenshot 1.7.0(for fullscreenshot)
+pip install Selenium-Screenshot
+
+# install Chrome driver
+yum -y install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+wget https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+
+# upload capture.py file
+
+# SELinux setting
+vi /etc/selinux/config
+SELINUX=enforcing or permissive  # either one is ok
+
+# firewall setting
+yum install firewalld 
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --reload
+
+# crontab
+crontab -e
+0 0 * * * /usr/bin/python3 #python file path
